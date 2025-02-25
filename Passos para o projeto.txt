@@ -4,11 +4,54 @@
 	• Configurar um servidor local (XAMPP).
 
 ✅ 2. Criar a estrutura da base de dados
-	• users (armazenar usuários, incluindo caminho da foto de perfil).
-	• events e event_participants (gestão de eventos).
-	• groups e group_members (comunidades esportivas).
-	• locations (locais esportivos).
-	• messages (chat entre usuários).
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    profile_picture VARCHAR(255), -- Caminho para a imagem de perfil
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tabela de localizações
+CREATE TABLE locations (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    address VARCHAR(255),
+    latitude DECIMAL(9,6),
+    longitude DECIMAL(9,6),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tabela de eventos
+CREATE TABLE events (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    date_event DATETIME NOT NULL,
+    location_id INT NOT NULL,
+    created_by INT NOT NULL, -- Criador do evento
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (location_id) REFERENCES locations(id) ON DELETE CASCADE,
+    FOREIGN KEY (created_by) REFERENCES users(id) ON DELETE CASCADE
+);
+
+-- Tabela de participações (garante que cada user tem um local e data definidos)
+CREATE TABLE event_participants (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    event_id INT NOT NULL,
+    location_id INT NOT NULL, -- O local onde o utilizador participa
+    participation_date DATETIME NOT NULL, -- Data exata da participação
+    role ENUM('participante', 'organizador') DEFAULT 'participante',
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (event_id) REFERENCES events(id) ON DELETE CASCADE,
+    FOREIGN KEY (location_id) REFERENCES locations(id) ON DELETE CASCADE,
+    UNIQUE (user_id, participation_date) -- Garante que um user não pode estar em dois eventos ao mesmo tempo
+);
+
+	• Opcional: messages (chat entre usuários).
 	• Opcional: Criar tabelas para notificações e amizades.
 
 ✅ 3. Implementar a autenticação e segurança (PHP + JWT)
