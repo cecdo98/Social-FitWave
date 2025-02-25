@@ -1,0 +1,36 @@
+📌 Planeamento e Configuração Inicial
+✅ 1. Configurar o ambiente de desenvolvimento
+	• Instalar PHP, MySQL, Composer, Node.js e React.
+	• Configurar um servidor local (XAMPP).
+
+✅ 2. Criar a estrutura da base de dados
+	• users (armazenar usuários, incluindo caminho da foto de perfil).
+	• events e event_participants (gestão de eventos).
+	• groups e group_members (comunidades esportivas).
+	• locations (locais esportivos).
+	• messages (chat entre usuários).
+	• Opcional: Criar tabelas para notificações e amizades.
+
+✅ 3. Implementar a autenticação e segurança (PHP + JWT)
+	• Criar sistema de registo e login com JWT para autenticação segura.
+	• Criar sistema de proteção de rotas para garantir segurança.
+
+📌 Backend - PHP (API RESTful)
+✅ 4. Criar endpoints para utilizadores (login, registo, perfil)
+✅ 5. Criar endpoints para eventos (criar, listar, gerir inscrições)
+✅ 6. Criar endpoints para grupos (criar, listar, gerir membros)
+✅ 7. Criar endpoints para mensagens (armazenar e recuperar conversas)
+✅ 8. Implementar WebSockets para chat em tempo real (Node.js + Socket.io)
+
+📌 Testes de API
+✅ 9. Testar os endpoints com Postman para garantir que tudo funciona corretamente
+
+📌 Frontend - React
+✅ 10. Criar a interface de utilizador (login, registo, dashboard)
+✅ 11. Implementar o sistema de eventos (criação, inscrição, detalhes)
+✅ 12. Implementar o sistema de grupos (criação, adesão, listagem)
+✅ 13. Criar e integrar o chat (interface + WebSocket)
+
+📌 Testes e Implementação
+✅ 14. Testar a aplicação completa (fluxo de utilizador e funcionalidades)
+•	Configurar um servidor online para hospedar PHP + MySQL.
