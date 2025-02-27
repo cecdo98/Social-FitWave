@@ -1,15 +1,5 @@
 {
-    "name": "carlo/backend",
-    "autoload": {
-        "psr-4": {
-            "Carlo\\Backend\\": "src/"
-        }
-    },
-    "authors": [
-        {
-            "name": "cecdo98",
-            "email": "carlosemanuel98@hotmail.com"
-        }
-    ],
-    "require": {}
+    "require": {
+        "firebase/php-jwt": "^6.11"
+    }
 }

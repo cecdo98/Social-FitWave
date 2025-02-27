@@ -9,7 +9,7 @@
         }
         
         public function login($email, $password){
-            $sql = "SELECT * FROM users WHERE email = : email";
+            $sql = "SELECT * FROM users WHERE email = :email";
 
             $stmt = $this->pdo->prepare($sql);
             $stmt ->bindParam(':email', $email);
@@ -65,12 +65,12 @@
 
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
             
-                $sql = "INSERT INTO users(email, utilizador, password) 
-                        VALUES (:email, :utilizador, :password)";
+                $sql = "INSERT INTO users(email, name, password) 
+                        VALUES (:email, :name, :password)";
         
                 $stmt = $this->pdo->prepare($sql);
                 $stmt->bindParam(':email', $email);
-                $stmt->bindParam(':utilizador', $name);
+                $stmt->bindParam(':name', $name);
                 $stmt->bindParam(':password', $hashedPassword);
         
                 $success = $stmt->execute();
