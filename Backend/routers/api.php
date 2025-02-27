@@ -43,10 +43,10 @@
 
                 $success =$authController->login($data['email'],$data['password']);
                 if($success){
-                    $token = JwtAuth::generateToken($data['Email']);
-                    echo json_encode(["succes" => true, "message" =>"Login bem-sucedido!", "token" => $token]);
+                    $token = JwtAuth::generateToken($data['email']);
+                    echo json_encode(["success" => true, "message" =>"Login bem-sucedido!", "token" => $token]);
                 }else{
-                    echo json_encode(["succes" => false, "message" =>"Email ou password errados!"]);
+                    echo json_encode(["success" => false, "message" =>"Email ou password errados!"]);
                 }
         }
     }
