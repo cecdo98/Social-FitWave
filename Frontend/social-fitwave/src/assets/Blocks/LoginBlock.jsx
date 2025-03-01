@@ -1,7 +1,7 @@
 import { useState } from "react"
 import ButtonLogin from "../Buttons/ButtonLogin";
 import { useNavigate} from "react-router-dom";
-
+import '../../Css/BlockCss/LoginRegisterBlock.css'
 
 function LoginPage(){
     const [email,setEmail] = useState("");
@@ -11,11 +11,11 @@ function LoginPage(){
 
     return(
         <>
-            <div>
-                <div>
+            <div className="LoginBody">
+                <div className="LoginMainForm">
                     <form onSubmit={(e)=> e.preventDefault()}>
                         <h1>Login</h1>
-                        <div>
+                        <div className="Login">
                             <input type="email"
                             placeholder="Email"
                             value={email}
@@ -23,7 +23,7 @@ function LoginPage(){
                             required
                             />
                         </div>
-                        <div>
+                        <div className="Login">
                             <input type="password"
                             placeholder="Password"
                             value={password}
@@ -33,12 +33,12 @@ function LoginPage(){
                         </div>
                             {/*Usar o onChange no selecionar diferentes desportos  */}
 
-                        <div>
+                        <div className="ButtonsOfLogin">
                             <div>
                                 <ButtonLogin email={email} password={password}/>
                             </div>
                             <div>
-                                <button
+                                <button className="ButtonsInLoginRegister"
                                     type="button"
                                     onClick={()=>navigate("registerBlock")}
                                 >Registar

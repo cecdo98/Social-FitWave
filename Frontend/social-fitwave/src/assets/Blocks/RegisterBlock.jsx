@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate} from "react-router-dom";
 import ButtonRegister from "../Buttons/ButtonRegister";
+import '../../Css/BlockCss/LoginRegisterBlock.css'
 
 function RegisterBlock(){
     const [email, setEmail] = useState("");
@@ -11,11 +12,11 @@ function RegisterBlock(){
 
     return(
         <>
-            <div>
-                <div>
+            <div className="RegisterBody"> 
+                <div className="RegisterMainForm">
                     <form onSubmit={(e)=>e.preventDefault()}>
                         <h1>Registo</h1>
-                        <div>
+                        <div className="Register">
                             <input type="email"
                             placeholder="Email"
                             value={email}
@@ -23,7 +24,7 @@ function RegisterBlock(){
                             required
                             />
                         </div>
-                        <div>
+                        <div className="Register">
                             <input type="password"
                             placeholder="Password"
                             value={password}
@@ -31,7 +32,7 @@ function RegisterBlock(){
                             required
                             />
                         </div>
-                        <div>
+                        <div className="Register">
                             <input type="text"
                             placeholder="Nome"
                             value={name}
@@ -40,12 +41,12 @@ function RegisterBlock(){
                             />
                         </div>
 
-                        <div>
+                        <div className="ButtonsOfRegister">
                             <div>
-                                <ButtonRegister/>
+                                <ButtonRegister email={email} password={password} name={name}/>
                             </div>
                             <div>
-                                <button 
+                                <button className="ButtonsInLoginRegister"
                                 type="button" 
                                 onClick={()=>navigate("/")}>
                                 Voltar

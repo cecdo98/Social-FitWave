@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate} from "react-router-dom";
+import '../../Css/ButtonsCss/Buttons.css';
 
 
 function ButtonLogin({email ,password}){
@@ -35,9 +36,9 @@ function ButtonLogin({email ,password}){
 
     return(
         <>
-            <button 
+            <button className="ButtonsInLoginRegister"
                 onClick={handleLogin} disabled={loading}>
-                {loading ? "loading..." : "login"}
+                {loading ? "loading..." : "Login"}
             </button>
         </>
     )
