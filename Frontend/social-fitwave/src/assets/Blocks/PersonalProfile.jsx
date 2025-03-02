@@ -1,0 +1,46 @@
+import { useState, useEffect } from "react";
+
+
+
+function PersonalProfile({email, token}){
+    const [optionsModalOpen, setOptionsModalOpen] = useState(false);
+
+
+    function Options(){
+        setOptionsModalOpen(!optionsModalOpen)
+    }
+
+    return(
+        <>
+            <div>
+                <div>
+                    {/*Nao se sabe se vai implementar */}
+                    <i className='bx bx-plus-circle'></i>
+                    Novo evento
+                </div>
+                <div>
+                    <button
+                    onClick={Options}
+
+                    >
+                    <i className='bx bxs-cog'></i>
+                        Definições
+                    </button>
+                </div>
+            </div>
+
+            {optionsModalOpen && (
+                <div>
+                    <div>
+                        Perfil
+                    </div>
+                    <div>
+                        loggout
+                    </div>
+                </div>
+            )}
+        </>
+    );
+}
+
+export default PersonalProfile

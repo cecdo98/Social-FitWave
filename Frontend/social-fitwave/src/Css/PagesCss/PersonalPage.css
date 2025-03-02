@@ -1,0 +1,52 @@
+#root, .PersonalPageMain{
+    display: flex;  
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+
+.PersonalPageHeader{
+    background-color: rgb(226, 182, 100);
+    padding: 10px;
+    text-align: center;
+}
+
+.PersonalPageFooter{
+    background-color: rgb(226, 182, 100);
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+}
+
+.PersonalPageComponents{
+    display: flex;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.PersonalPageSocial{
+    text-align: center;
+    background-color: gainsboro;
+    border-radius: 20px;
+    margin: 5px;
+    padding: 10px;
+    flex-grow: 2;
+}
+
+.PersonalPageEvents{
+    text-align: center;
+    background-color: gainsboro;
+    border-radius: 20px;
+    margin: 5px;
+    padding: 10px;
+    flex-grow: 6;
+}
+
+.PersonalPagePessoal{
+    text-align: center;
+    background-color: gainsboro;
+    border-radius: 20px;
+    margin: 5px;
+    padding: 10px;
+    flex-grow: 1;
+}
