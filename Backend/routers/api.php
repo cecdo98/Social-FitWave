@@ -48,6 +48,45 @@
                 }else{
                     echo json_encode(["success" => false, "message" =>"Email ou password errados!"]);
                 }
+                break;
+
+
+            case 'account':
+                if(!isset($data['email'])) {
+                    echo json_encode(["success" => false, "message" =>"Parâmetros inválidos!"]);
+                    exit;
+                }
+                
+
+                $response = $authController->getProfile($data['email']);
+
+                if($response){
+                    $profileData =$response["data"];
+                    echo json_encode($profileData);
+                }else{
+                    echo json_encode(["erro" => $response["message"]]);
+                }
+                break;
+
+            case 'update_account':
+                if(!isset($data['id'])){
+                    echo json_encode(["success" => false, "message" => "Parâmetros inválidos"]);
+                    exit;
+                }
+                $result = $authController->updateProfile(
+                    $data['id'],
+                    $data['name'] ?? null,
+                    $data['email'] ?? null,
+                    $data['password'] ?? null,
+                    $data['profile_picture'] ?? null
+                );
+                
+                if (isset($result['success']) && !$result['success']) {
+                    echo json_encode($result);  
+                } else {
+                    echo json_encode($result);  
+                }
+                break;
         }
     }
 ?>
