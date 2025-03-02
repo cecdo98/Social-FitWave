@@ -14,6 +14,9 @@ function PersonalPage({email, token}) {
                         <h1>social</h1>      
                     </aside>
                     <aside className='PersonalPageEvents'>
+                        {/*por a parte /default_profile_picture.jpg no sql e o 
+                        resto no fica guardado no codigo e fica src={user.profilePictureUrl}*/}
+                        <img src="http://localhost/Social-FitWave/Backend/uploads/default_profile_picture.jpg" width="300" height="300"/>
                         <h1>Eventos</h1>
                     </aside>
                     <aside className='PersonalPagePessoal'> 
