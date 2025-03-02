@@ -6,13 +6,13 @@
 
 
 .PersonalPageHeader{
-    background-color: rgb(226, 182, 100);
+    background-color: hsl(39, 63%, 58%);
     padding: 10px;
     text-align: center;
 }
 
 .PersonalPageFooter{
-    background-color: rgb(226, 182, 100);
+    background-color: hsl(39, 63%, 58%);
     width: 100%;
     text-align: center;
     padding: 10px;
@@ -39,7 +39,7 @@
     border-radius: 20px;
     margin: 5px;
     padding: 10px;
-    flex-grow: 6;
+    flex-grow: 9;
 }
 
 .PersonalPagePessoal{
