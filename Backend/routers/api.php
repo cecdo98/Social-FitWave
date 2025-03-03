@@ -58,13 +58,13 @@
                 }
                 
 
-                $response = $authController->getProfile($data['email']);
+                $account = $authController->getProfile($data['email']);
 
-                if($response){
-                    $profileData =$response["data"];
+                if($account){
+                    $profileData =$account["data"];
                     echo json_encode($profileData);
                 }else{
-                    echo json_encode(["erro" => $response["message"]]);
+                    echo json_encode(["erro" => $account["message"]]);
                 }
                 break;
 
@@ -85,6 +85,20 @@
                     echo json_encode($result);  
                 } else {
                     echo json_encode($result);  
+                }
+                break;
+
+            case 'delete_account':
+                if(!isset($data['email'])){
+                    echo json_encode(["success" => false,"message" => "Parâmetros inválidos"]);
+                    exit;
+                }
+                $result = $authController->deleteUser($data['email']);
+
+                if ($result['success'] === true) {
+                    echo json_encode(["success" => true, "message" => "Utilizador apagado!" ]);
+                } else {
+                    echo json_encode(["success" => false, "message" => "Utilizador não encontrado"]);
                 }
                 break;
         }

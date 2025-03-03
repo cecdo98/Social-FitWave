@@ -4,13 +4,13 @@ import '../../Css/ButtonsCss/Buttons.css';
 
 
 function ButtonLogin({email ,password}){
-    const navigate = useNavigate();  // navegar para a pagina principal apos login
+    const navigate = useNavigate();  
     const [loading,setLoading] = useState(false);
 
     const handleLogin = async () => {
         setLoading(true)
     
-        const response = await fetch('http://localhost/social-fitwave/Backend/routers/api.php',{
+        const response = await fetch('http://localhost/social-fitwave/Backend/routers/api.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ action: "login", email, password })
@@ -20,17 +20,17 @@ function ButtonLogin({email ,password}){
         setLoading(false);
     
         if (data.success) {
-            alert("login com sucesso") 
-            navigate("personalPage",{
-                state : {
-                    email: email,
+            navigate("personalPage", {
+                state: {
+                    email: email, 
                     token: data.token
-                }})    
-        }else{
+                }
+            });
+        } else {
             alert("email ou password incorreto!");
-
         }
     };
+    
 
 
 
