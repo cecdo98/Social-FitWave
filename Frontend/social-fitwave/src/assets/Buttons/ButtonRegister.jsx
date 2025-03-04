@@ -22,7 +22,6 @@ function ButtonRegister({email ,password ,name}){
         setLoading(false);
 
         if(data.success){
-            alert("Registo com sucesso")
             navigate('/')
         } else{
             alert("erro")

@@ -35,7 +35,7 @@ function LoginPage(){
 
                         <div className="ButtonsOfLogin">
                             <div>
-                                <ButtonLogin email={email} password={password}/>
+                                <ButtonLogin email={email} password={password} />
                             </div>
                             <div>
                                 <button className="ButtonsInLoginRegister"

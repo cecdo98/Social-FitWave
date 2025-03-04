@@ -167,5 +167,32 @@
             ];
 
         }
+
+        public function deleteUser($email){
+            $profile = $this->getProfile($email);
+            if($profile['success']){
+                return[
+                    "success" => false,
+                    "message" => "Utilizador não encontrado"
+                ];
+            }
+                
+            $sql = "DELETE FROM users WHERE email = :email";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+
+            if ($stmt->rowCount() > 0) {
+                return [
+                    "success" => true,
+                    "message" => "Utilizador apagado!"
+                ];
+            } else {
+                return [
+                    "success" => false,
+                    "message" => "Erro ao apagar utilizador!"
+                ];
+            }
+        }
     }
 ?>

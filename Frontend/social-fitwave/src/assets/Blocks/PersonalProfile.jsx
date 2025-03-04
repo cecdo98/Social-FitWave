@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import ButtonLogout from '../Buttons/ButtonLogout.jsx';
 import ProfileBlock from '../Blocks/ProfileBlock.jsx';
 
@@ -32,7 +32,7 @@ function PersonalProfile({email, token}){
             {optionsModalOpen && (
                 <div>
                     <div>
-                        <ProfileBlock email={email} token={token}/>
+                        <ProfileBlock email={email} token={token} />
                     </div>
                     <div>
                         <ButtonLogout token={token}/>
