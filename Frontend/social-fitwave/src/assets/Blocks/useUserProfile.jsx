@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom"; 
+
 
 function useUserProfile(email, token) {
+    const navigate = useNavigate();
     const [user, setUser] = useState(null);  
     const [profileModalOpen, setProfileModalOpen] = useState(false);  
     const [editProfile, setEditProfile] = useState({
@@ -50,8 +53,8 @@ function useUserProfile(email, token) {
                 setUser(data);  
                 setEditProfile({
                     id: data.id,
-                    name: data.name,
-                    email: data.email,
+                    name: '',
+                    email: '',
                     password: '',  
                     profile_picture: data.profile_picture || ''
                 });
@@ -106,7 +109,32 @@ function useUserProfile(email, token) {
         }
     };
     
+
+    const HandleDelete = async (e) => {
+        e.preventDefault();
     
+        const confirmDelete = window.confirm("Tem certeza que deseja apagar a sua conta? Esta ação não pode ser desfeita!");
+    
+        if (!confirmDelete) {
+            return;  
+        }
+    
+        const response = await fetch('http://localhost/social-fitwave/Backend/routers/api.php', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({ action: "delete_account", email })
+        });
+    
+        const data = await response.json();
+        console.log("Resposta da API:", data);
+    
+        if (data.success) {
+            navigate("/");
+        }
+    };
 
     return {
         user,
@@ -116,7 +144,8 @@ function useUserProfile(email, token) {
         setEditProfile,
         handleEvent,
         updateProfile,
-        ToggleModal
+        ToggleModal,
+        HandleDelete
     };
 }
 

@@ -37,5 +37,108 @@
 .modalBody{
     display: flex;
     flex: 1;
+    background-color: rgb(221, 218, 218);
+    border-radius: 20px;
 }
 
+.modalImg{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 25vh;
+    align-items: center;
+    font-size: 20px;
+}
+
+.modalImg img{
+    margin-top: 10px;
+}
+
+.modalForm{
+    width: 420px;
+    padding: 15px 15px;
+    text-align: justify;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalForm  h3{
+    font-size: 20px;
+    text-align: center;
+}
+
+.modalForm div p {
+    width: 100%;
+    margin: 10px 0; 
+}
+
+.modalInput input{
+        width: 100%;
+        box-shadow:  0 0 10px rgba(0, 0, 0,.2);
+        border-radius: 40px;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        padding: 10px 45px 10px 10px;
+}
+
+
+
+.modalButtonUpdate{
+    margin-top: 10px;
+    width: 100%;
+    height: 45px;
+    background:hsl(120, 42%, 67%);
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    cursor:pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600; 
+}
+
+.modalButtonUpdate:hover{
+    background: hsl(120, 38%, 49%);
+}
+
+.modalButtonClose{
+    margin-top: 10px;
+    width: 100%;
+    height: 45px;
+    background: hsl(0, 1%, 47%);
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    cursor:pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600; 
+}
+
+.modalButtonClose:hover{
+    background: hsl(0, 1%, 34%);
+}
+
+.modalButtonDelete{
+    margin-top: 10px;
+    width: 100%;
+    height: 45px;
+    background: hsl(0, 63%, 59%);
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    cursor:pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600; 
+}
+
+.modalButtonDelete:hover{
+    background: #e23232;
+}

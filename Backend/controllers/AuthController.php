@@ -170,8 +170,8 @@
 
         public function deleteUser($email){
             $profile = $this->getProfile($email);
-            if($profile['success']){
-                return[
+            if (!$profile['success']) { 
+                return [
                     "success" => false,
                     "message" => "Utilizador não encontrado"
                 ];

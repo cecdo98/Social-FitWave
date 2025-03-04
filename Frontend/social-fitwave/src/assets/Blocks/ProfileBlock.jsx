@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import useUserProfile from "./useUserProfile";
 import '../../Css/BlockCss/ModalBlock.Css'
 
+
 function ProfileBlock({ email, token }) {
     const {
         user,
@@ -11,7 +12,8 @@ function ProfileBlock({ email, token }) {
         setEditProfile,
         handleEvent,
         updateProfile,
-        ToggleModal
+        ToggleModal,
+        HandleDelete
     } = useUserProfile(email, token);
 
     return (
@@ -24,34 +26,36 @@ function ProfileBlock({ email, token }) {
                         <form className="modal-content" onSubmit={updateProfile}>
                             <h2 className="Titulo">Perfil do Utilizador</h2>
                             <div className="modalBody"> 
-                                <div>
+                                <div className="modalImg">
                                     {/*falta a foto de perfil atual para atualizar */}
-                                    <label>Foto de Perfil:</label>
+                                    <h3> Foto de Perfil</h3>
                                     <img src="http://localhost/Social-FitWave/Backend/uploads/default_profile_picture.jpg" alt="Fotografia de perfil" width="100" height="100"/>
+                                    <button>Atualizar foto</button>
                                 </div>
-                                <div>
-                                    <div>
-                                        <p><strong>Nome antigo:</strong> {user.name}</p>
-                                        <label>Nome:</label>
+                                <div className="modalForm">
+                                    <div className="modalInput">
+                                        <h3>Nome antigo: {user.name}</h3>
                                         <input
                                             type="text"
+                                            placeholder="Nome"
                                             value={editProfile.name}
                                             onChange={(e) => setEditProfile({ ...editProfile, name: e.target.value })}
                                         />
                                     </div>
-                                    <div>
-                                        <p><strong>Email antigo:</strong> {user.email}</p>
-                                        <label>Email:</label>
+                                    <div className="modalInput">
+                                        <h3>Email antigo: {user.email}</h3>
                                         <input
                                             type="email"
+                                            placeholder="Email"
                                             value={editProfile.email}
                                             onChange={(e) => setEditProfile({ ...editProfile, email: e.target.value })}
                                         />
                                     </div>
-                                    <div >
-                                        <label>Nova Senha:</label>
+                                    <div className="modalInput">
+                                        <h3>Palavra-passe </h3>
                                         <input
                                             type="password"
+                                            placeholder="Palavra-passe"
                                             value={editProfile.password}
                                             onChange={(e) => setEditProfile({ ...editProfile, password: e.target.value })}
                                         />
@@ -59,11 +63,14 @@ function ProfileBlock({ email, token }) {
                                 </div>
                             </div>
                             <div className="modalFooter">
-                                <div>
-                                    <button type="submit">Atualizar</button>
+                                <div >
+                                    <button className="modalButtonUpdate" type="submit">Atualizar</button>
                                 </div>
                                 <div>
-                                    <button onClick={ToggleModal}>Fechar</button>
+                                    <button className="modalButtonClose" onClick={ToggleModal}>Fechar</button>
+                                </div>
+                                <div>
+                                    <button className="modalButtonDelete" onClick={HandleDelete}>Apagar conta</button>
                                 </div>
                             </div>
                         </form>
