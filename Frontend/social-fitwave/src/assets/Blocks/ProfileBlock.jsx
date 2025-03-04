@@ -27,7 +27,7 @@ function ProfileBlock({ email, token }) {
                                 <div>
                                     {/*falta a foto de perfil atual para atualizar */}
                                     <label>Foto de Perfil:</label>
-                                    <img src="http://localhost/Social-FitWave/Backend/uploads/default_profile_picture.jpg" width="100" height="100"/>
+                                    <img src="http://localhost/Social-FitWave/Backend/uploads/default_profile_picture.jpg" alt="Fotografia de perfil" width="100" height="100"/>
                                 </div>
                                 <div>
                                     <div>
