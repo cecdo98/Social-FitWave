@@ -12,21 +12,16 @@ function PersonalPage() {
             <header className='PersonalPageHeader'>
                 Social-Fitwave 
             </header>
-                <div className='PersonalPageComponents'>
-                <aside className='PersonalPagePessoal'> 
-                        <h1>Pessoal</h1>
-                        {/*por a parte /default_profile_picture.jpg no sql e o 
-                        resto no fica guardado no codigo e fica src={user.profilePictureUrl}*/}
-                        <img src="http://localhost/Social-FitWave/Backend/uploads/default_profile_picture.jpg" alt="Fotografia de perfil" width="100" height="100"/>
-                        <PersonalProfile email={email} token={token}/>
-                        
-                    </aside>
-                    <aside className='PersonalPageEvents'>
+            <nav className='PersonalPagePessoal' >
+                {/*por a parte /default_profile_picture.jpg no sql e o 
+                resto no fica guardado no codigo e fica src={user.profilePictureUrl}*/}
+                <img src="http://localhost/Social-FitWave/Backend/uploads/default_profile_picture.jpg" alt="Fotografia de perfil" width="100" height="100"/>
+                <PersonalProfile email={email} token={token}/>
+            </nav>
+                <div className='PersonalPageComponents' >
+                    <div className='PersonalPageEvents'>
                         <h1>Eventos</h1>
-                    </aside>
-                    <aside className='PersonalPageSocial'>
-                        <h1>social</h1>      
-                    </aside>
+                    </div>
                 </div>
             <footer className='PersonalPageFooter'>
                 &copy; {new Date().getFullYear()} Footer

@@ -1,8 +1,3 @@
-#root, .PersonalPageMain{
-    display: flex;  
-    flex-direction: column;
-    min-height: 100vh;
-}
 
 
 .PersonalPageHeader{
@@ -19,34 +14,27 @@
 }
 
 .PersonalPageComponents{
-    display: flex;
-    flex: 1;
-    overflow-y: auto;
-}
-
-.PersonalPageSocial{
+    width: 1000px;
+    margin: auto;
+    height: 780px;
     text-align: center;
     background-color: gainsboro;
     border-radius: 20px;
-    margin: 5px;
-    padding: 10px;
-    flex-grow: 2;
 }
+
+
 
 .PersonalPageEvents{
-    text-align: center;
-    background-color: gainsboro;
-    border-radius: 20px;
-    margin: 5px;
-    padding: 10px;
-    flex-grow: 9;
+    
+
+    
 }
 
 .PersonalPagePessoal{
-    text-align: center;
-    background-color: gainsboro;
-    border-radius: 20px;
-    margin: 5px;
-    padding: 10px;
-    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    
+    width: 1000px;
+    margin: auto;
+    padding-bottom: 10px;
 }

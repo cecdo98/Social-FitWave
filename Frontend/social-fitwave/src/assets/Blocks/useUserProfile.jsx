@@ -50,12 +50,12 @@ function useUserProfile(email, token) {
             const data = await response.json();
 
             if (data.id) {
-                setUser(data);  
+                setUser(data);
                 setEditProfile({
-                    id: data.id,
-                    name: '',
-                    email: '',
-                    password: '',  
+                    id: data.id || null,
+                    name: data.name || '',
+                    email: data.email || '',
+                    password: '',
                     profile_picture: data.profile_picture || ''
                 });
             } else {
