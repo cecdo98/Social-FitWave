@@ -194,5 +194,10 @@
                 ];
             }
         }
+
+        public function updateProfilePicture($email, $file) {
+            
+        }
+        
     }
 ?>

@@ -21,7 +21,6 @@ function PersonalProfile({email, token}){
                 <div>
                     <button
                     onClick={Options}
-
                     >
                     <i className='bx bxs-cog'></i>
                         Definições

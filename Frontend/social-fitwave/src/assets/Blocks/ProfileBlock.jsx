@@ -29,7 +29,7 @@ function ProfileBlock({ email, token }) {
                                 <div className="modalImg">
                                     {/*falta a foto de perfil atual para atualizar */}
                                     <h3> Foto de Perfil</h3>
-                                    <img src="http://localhost/Social-FitWave/Backend/uploads/default_profile_picture.jpg" alt="Fotografia de perfil" width="100" height="100"/>
+                                    <img src="http://localhost/Social-FitWave/Backend/uploads/default_profile_picture.jpg" alt="Fotografia de perfil" width="100" height="100" />
                                     <button>Atualizar foto</button>
                                 </div>
                                 <div className="modalForm">

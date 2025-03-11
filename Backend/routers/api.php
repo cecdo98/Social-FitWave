@@ -101,6 +101,12 @@
                     echo json_encode(["success" => false, "message" => "Utilizador não encontrado"]);
                 }
                 break;
+
+                case 'upload_profile_picture':
+                    
+                    exit;
+                
+
         }
     }
 ?>
