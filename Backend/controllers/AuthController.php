@@ -104,7 +104,7 @@
         public function updateProfile($id, $name = null, $email = null, $password = null, $profile_picture = null) {
             $fields = [];
             $params = [];
-        
+            
             if ($name !== null) {
                 $fields[] = "name = ?";
                 $params[] = $name;
@@ -125,25 +125,26 @@
                 $fields[] = "password = ?";
                 $params[] = $hashedPassword;
             }
-
+        
             if ($profile_picture !== null) {
                 $fields[] = "profile_picture = ?";
                 $params[] = $profile_picture;
             }
-
+        
             if (empty($fields)) {
                 return false;
             }
-        
+            
+            // SQL para atualizar o perfil
             $sql = "UPDATE users SET " . implode(", ", $fields) . " WHERE id = ?";
             $params[] = $id;
-
-            error_log("SQL: " . $sql);
-            error_log("Parâmetros: " . json_encode($params));
         
+            // Prepare the statement
             $stmt = $this->pdo->prepare($sql);
             return $stmt->execute($params);
         }
+        
+        
         
         public function getUserByEmail($email){
             $sql= "SELECT name FROM users WHERE email = :email";
@@ -195,9 +196,8 @@
             }
         }
 
-        public function updateProfilePicture($email, $file) {
-            
-        }
+        
+        
         
     }
 ?>

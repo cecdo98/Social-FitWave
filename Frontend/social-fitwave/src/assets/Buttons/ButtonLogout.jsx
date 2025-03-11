@@ -14,7 +14,7 @@ function ButtonLogout({token}){
             <button
                 onClick={handleLogout}
             >
-                Logout
+                <i className='bx bx-log-out'></i>
             </button>
         </>
     )

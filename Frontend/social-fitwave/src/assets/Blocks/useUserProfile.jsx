@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from "react-router-dom"; 
-
+import { useNavigate } from "react-router-dom";
 
 function useUserProfile(email, token) {
     const navigate = useNavigate();
@@ -21,7 +20,6 @@ function useUserProfile(email, token) {
     const handleEvent = () => {
         setProfileModalOpen(true);
     };
-
 
     useEffect(() => {
         if (profileModalOpen && email) {
@@ -80,12 +78,10 @@ function useUserProfile(email, token) {
                 id: editProfile.id,
                 name: editProfile.name,
                 email: editProfile.email,
-                profile_picture: editProfile.profile_picture
+                profile_picture: editProfile.profile_picture  
             };
     
-            if (editProfile.password) {
-                dataToSend.password = editProfile.password;
-            }
+            console.log("Enviando dados:", dataToSend);
     
             const response = await fetch("http://localhost/social-fitwave/Backend/routers/api.php", {
                 method: "POST",
@@ -96,13 +92,17 @@ function useUserProfile(email, token) {
                 body: JSON.stringify(dataToSend)
             });
     
+            // Verifique se a resposta é válida e se a resposta é JSON
             const result = await response.json();
-   
-            if (result === true) {
+    
+            // Log da resposta para depuração
+            console.log("Resposta da API:", result);
+    
+            if (result.success === true) {
                 setProfileModalOpen(false);
                 fetchUser();  
             } else {
-                console.error("Erro ao atualizar perfil: A resposta da API não é válida.");
+                console.error("Erro ao atualizar perfil:", result);
             }
         } catch (error) {
             console.error("Erro ao atualizar perfil:", error);
@@ -110,15 +110,23 @@ function useUserProfile(email, token) {
     };
     
 
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            // Pega apenas o nome do arquivo e salva no estado
+            setEditProfile({ ...editProfile, profile_picture: file.name });
+        }
+    };
+
     const HandleDelete = async (e) => {
         e.preventDefault();
-    
+
         const confirmDelete = window.confirm("Tem certeza que deseja apagar a sua conta? Esta ação não pode ser desfeita!");
-    
+
         if (!confirmDelete) {
             return;  
         }
-    
+
         const response = await fetch('http://localhost/social-fitwave/Backend/routers/api.php', {
             method: "POST",
             headers: {
@@ -127,10 +135,10 @@ function useUserProfile(email, token) {
             },
             body: JSON.stringify({ action: "delete_account", email })
         });
-    
+
         const data = await response.json();
         console.log("Resposta da API:", data);
-    
+
         if (data.success) {
             navigate("/");
         }
@@ -145,7 +153,8 @@ function useUserProfile(email, token) {
         handleEvent,
         updateProfile,
         ToggleModal,
-        HandleDelete
+        HandleDelete,
+        handleImageChange  // Expor a função para lidar com o upload da imagem
     };
 }
 

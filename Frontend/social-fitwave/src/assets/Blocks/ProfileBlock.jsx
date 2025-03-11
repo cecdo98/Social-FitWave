@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import useUserProfile from "./useUserProfile";
 import '../../Css/BlockCss/ModalBlock.Css'
 
-
 function ProfileBlock({ email, token }) {
     const {
         user,
@@ -13,12 +12,26 @@ function ProfileBlock({ email, token }) {
         handleEvent,
         updateProfile,
         ToggleModal,
-        HandleDelete
+        HandleDelete,
+        handleImageChange
     } = useUserProfile(email, token);
+
+    const [selectedFile, setSelectedFile] = useState(null);
+
+    const imagePath = "http://localhost/social-fitwave/Backend/uploads/";
+    const profileImagePath = user?.profile_picture
+        ? `${imagePath}${user.profile_picture}`
+        : `${imagePath}default_profile_picture.png`;
+
+    const handleFileChange = (e) => {
+        setSelectedFile(e.target.files[0]);
+    };
 
     return (
         <>
-            <button onClick={handleEvent}>Perfil</button>
+            <button onClick={handleEvent}>
+                <i className='bx bxs-user'></i>
+            </button>
 
             {profileModalOpen && user && (
                 <div className="modal">
@@ -27,10 +40,13 @@ function ProfileBlock({ email, token }) {
                             <h2 className="Titulo">Perfil do Utilizador</h2>
                             <div className="modalBody"> 
                                 <div className="modalImg">
-                                    {/*falta a foto de perfil atual para atualizar */}
                                     <h3> Foto de Perfil</h3>
-                                    <img src="http://localhost/Social-FitWave/Backend/uploads/default_profile_picture.jpg" alt="Fotografia de perfil" width="100" height="100" />
-                                    <button>Atualizar foto</button>
+                                    <img 
+                                        src={profileImagePath} 
+                                        alt="Foto de Perfil" 
+                                        width="150"
+                                    />
+                                    <input type="file" accept="image/*" onChange={handleImageChange} />
                                 </div>
                                 <div className="modalForm">
                                     <div className="modalInput">
@@ -52,7 +68,7 @@ function ProfileBlock({ email, token }) {
                                         />
                                     </div>
                                     <div className="modalInput">
-                                        <h3>Palavra-passe </h3>
+                                        <h3>Palavra-passe: </h3>
                                         <input
                                             type="password"
                                             placeholder="Palavra-passe"
@@ -82,3 +98,4 @@ function ProfileBlock({ email, token }) {
 }
 
 export default ProfileBlock;
+
