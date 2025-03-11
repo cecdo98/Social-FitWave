@@ -9,15 +9,14 @@ function PersonalPage() {
     return(
         <>
         <div className="PersonalPageMain">
-            <header className='PersonalPageHeader'>
-                Social-Fitwave 
-            </header>
-            <nav className='PersonalPagePessoal' >
-                {/*por a parte /default_profile_picture.jpg no sql e o 
-                resto no fica guardado no codigo e fica src={user.profilePictureUrl}*/}
-                <img src="http://localhost/Social-FitWave/Backend/uploads/default_profile_picture.jpg" alt="Fotografia de perfil" width="100" height="100"/>
-                <PersonalProfile email={email} token={token}/>
-            </nav>
+                <nav className='PersonalPagePessoal' >
+                    {/*por a parte /default_profile_picture.jpg no sql e o 
+                    resto no fica guardado no codigo e fica src={user.profilePictureUrl}*/}
+                    <img src="http://localhost/Social-FitWave/Backend/uploads/default_profile_picture.jpg" alt="Fotografia de perfil" width="100" height="100"/>
+                    <h1>Social-Fitwave </h1>
+                    <PersonalProfile email={email} token={token}/>           
+                </nav>
+
                 <div className='PersonalPageComponents' >
                     <div className='PersonalPageEvents'>
                         <h1>Eventos</h1>
