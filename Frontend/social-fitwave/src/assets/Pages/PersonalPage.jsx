@@ -2,11 +2,13 @@ import { useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import '../../Css/PagesCss/PersonalPage.css';
 import PersonalProfile from '../Blocks/PersonalProfile.jsx';
+import { IMAGE_URL } from '../../config.js';
+import { API_URL } from '../../config.js';
 
-// Função para buscar a foto de perfil usando a API
+
 const getProfilePicture = async (email, token) => {
     try {
-        const response = await fetch("http://localhost/social-fitwave/Backend/routers/api.php", {
+        const response = await fetch(`${API_URL}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -21,14 +23,14 @@ const getProfilePicture = async (email, token) => {
         const data = await response.json();
 
         if (data.success) {
-            return data.profile_picture; // Retorna o caminho da imagem
+            return data.profile_picture; 
         } else {
-            console.error("Erro ao buscar foto de perfil:", data.message);
-            return null; // Caso não tenha foto
+            console.error("Erro ao encontrar foto de perfil:", data.message);
+            return null;
         }
     } catch (error) {
         console.error("Erro na requisição:", error);
-        return null; // Em caso de erro
+        return null; // 
     }
 };
 
@@ -36,22 +38,21 @@ function PersonalPage() {
     const location = useLocation();
     const { email, token } = location.state || {};
     
-    const [profileImage, setProfileImage] = useState(""); // Para armazenar o caminho da foto de perfil
+    const [profileImage, setProfileImage] = useState(""); 
 
     useEffect(() => {
-        // Carregar a foto de perfil assim que o componente for montado
         const loadProfilePicture = async () => {
             const picture = await getProfilePicture(email, token);
             setProfileImage(picture);
         };
         loadProfilePicture();
-    }, [email, token]); // Quando o email ou token mudarem, refazer a requisição
+    }, [email, token]); 
 
     return (
         <div className="PersonalPageMain">
             <nav className='PersonalPagePessoal'>
                 <img
-                    src={profileImage ? profileImage : "http://localhost/Social-FitWave/Backend/uploads/default_profile_picture.jpg"}
+                    src={profileImage ? profileImage : `${IMAGE_URL}/default_profile_picture.png`}
                     alt="Fotografia de perfil"
                     width="100"
                     height="100"
