@@ -1,15 +1,16 @@
-.PersonalPagePessoal{
+.PersonalPagePessoal {
     background-color: hsl(39, 63%, 58%);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     width: 1000px;
     margin: auto;
     padding: 10px;
     border-radius: 20px;
 }
 
-.PersonalPageComponents{
+.PersonalPageComponents {
     padding-top: 10px;
     width: 1000px;
     margin: auto;
@@ -18,11 +19,86 @@
     background-color: gainsboro;
     border-radius: 20px;
     margin-top: 20px;
+    position: relative;
+    margin-bottom: 20px;
 }
 
-.PersonalPageFooter{
+.PersonalPageFooter {
     background-color: hsl(39, 63%, 58%);
-    width: 100%;
+    width: 1000px;
+    margin: auto;
+    border-radius: 20px;
     text-align: center;
     padding: 10px;
+}
+
+img {
+    margin-top: 10px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+
+.ProfileButton, .LogoutButton {
+    background-color: hsl(210, 50%, 50%);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.ProfileButton:hover {
+    background-color: hsl(210, 50%, 40%);
+}
+
+.LogoutButton {
+    background-color: hsl(0, 70%, 50%);
+}
+
+.LogoutButton:hover {
+    background-color: hsl(0, 70%, 40%);
+}
+
+/* Ícones dentro dos botões */
+.ProfileButton i, .LogoutButton i {
+    font-size: 18px;
+}
+
+.botao-fixo {
+    position: fixed; 
+    bottom: 60px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    background-color:hsl(120, 42%, 67%); 
+    color: white; 
+    border: none; 
+    border-radius: 50px; 
+    padding: 15px 30px; 
+    font-size: 16px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    cursor: pointer; 
+    z-index: 1000; 
+    transition: background-color 0.3s; 
+}
+
+.botao-fixo:hover {
+    background-color: hsl(120, 38%, 49%); 
+}
+
+
+@media(max-width: 1000px){
+    .PersonalPagePessoal,.PersonalPageComponents, .PersonalPageFooter{
+        width: auto;
+        margin: 10px;
+    }
 }

@@ -13,6 +13,7 @@ function ButtonLogout({token}){
         <>
             <button
                 onClick={handleLogout}
+                className="LogoutButton"
             >
                 <i className='bx bx-log-out'></i>
             </button>

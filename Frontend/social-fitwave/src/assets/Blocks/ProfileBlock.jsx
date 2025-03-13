@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import useUserProfile from "./useUserProfile";
 import '../../Css/BlockCss/ModalBlock.Css'
+import { IMAGE_URL } from "../../config";
 
 function ProfileBlock({ email, token }) {
     const {
@@ -18,18 +19,25 @@ function ProfileBlock({ email, token }) {
 
     const [selectedFile, setSelectedFile] = useState(null);
 
-    const imagePath = "http://localhost/social-fitwave/Backend/uploads/";
-    const profileImagePath = user?.profile_picture
+    const imagePath = `${IMAGE_URL}`;
+    const profileImagePath = selectedFile
+        ? URL.createObjectURL(selectedFile) 
+        : user?.profile_picture
         ? `${imagePath}${user.profile_picture}`
         : `${imagePath}default_profile_picture.png`;
 
     const handleFileChange = (e) => {
-        setSelectedFile(e.target.files[0]);
+        const file = e.target.files[0];
+        if (file) {
+            setSelectedFile(file);
+            handleImageChange(e); 
+        }
     };
 
     return (
         <>
-            <button onClick={handleEvent}>
+            <button onClick={handleEvent}
+            className="ProfileButton">
                 <i className='bx bxs-user'></i>
             </button>
 
@@ -40,14 +48,30 @@ function ProfileBlock({ email, token }) {
                             <h2 className="Titulo">Perfil do Utilizador</h2>
                             <div className="modalBody"> 
                                 <div className="modalImg">
-                                    <h3> Foto de Perfil</h3>
+                                    <h3>Foto de Perfil</h3>
                                     <img 
                                         src={profileImagePath} 
                                         alt="Foto de Perfil" 
                                         width="150"
                                     />
-                                    <input type="file" accept="image/*" onChange={handleImageChange} />
+
+                                    <input 
+                                        type="file" 
+                                        accept={imagePath} 
+                                        onChange={handleFileChange} 
+                                        id="fileInput"
+                                        style={{ display: "none" }}
+                                    />
+
+
+                                    <label htmlFor="fileInput" className="customFileButton">
+                                    Escolher Imagem
+                                    </label>
+
+
+                                    {selectedFile && <p>Selecionado: {selectedFile.name}</p>}
                                 </div>
+                                
                                 <div className="modalForm">
                                     <div className="modalInput">
                                         <h3>Nome antigo: {user.name}</h3>
@@ -79,15 +103,9 @@ function ProfileBlock({ email, token }) {
                                 </div>
                             </div>
                             <div className="modalFooter">
-                                <div >
-                                    <button className="modalButtonUpdate" type="submit">Atualizar</button>
-                                </div>
-                                <div>
-                                    <button className="modalButtonClose" onClick={ToggleModal}>Fechar</button>
-                                </div>
-                                <div>
-                                    <button className="modalButtonDelete" onClick={HandleDelete}>Apagar conta</button>
-                                </div>
+                                <button className="modalButtonUpdate" type="submit">Atualizar</button>
+                                <button className="modalButtonClose" onClick={ToggleModal}>Fechar</button>
+                                <button className="modalButtonDelete" onClick={HandleDelete}>Apagar conta</button>
                             </div>
                         </form>
                     </div>
@@ -98,4 +116,3 @@ function ProfileBlock({ email, token }) {
 }
 
 export default ProfileBlock;
-

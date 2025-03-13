@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import '../../Css/ButtonsCss/Buttons.css';
 import { useEffect, useState } from "react";
+import { API_URL } from "../../config";
 
 function ButtonRegister({email ,password ,name}){
     const navigate= useNavigate();
@@ -10,7 +11,7 @@ function ButtonRegister({email ,password ,name}){
         setLoading(true);
     
 
-        const response= await fetch('http://localhost/social-fitwave/Backend/routers/api.php',{
+        const response= await fetch(`${API_URL}`,{
                 method: 'POST',
                 headers:{ 'Content-Type': 'application/json' },
                 body: JSON.stringify({action: "register", email, password, name})

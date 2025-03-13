@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
+import { API_URL } from '../../config';
+
 
 function useUserProfile(email, token) {
     const navigate = useNavigate();
@@ -29,7 +31,7 @@ function useUserProfile(email, token) {
 
     const fetchUser = async () => {
         try {
-            const response = await fetch("http://localhost/social-fitwave/Backend/routers/api.php", {
+            const response = await fetch(`${API_URL}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -69,7 +71,6 @@ function useUserProfile(email, token) {
     
         try {
             if (!editProfile.id) {
-                console.error("ID do usuário não encontrado.");
                 return;
             }
     
@@ -81,9 +82,8 @@ function useUserProfile(email, token) {
                 profile_picture: editProfile.profile_picture  
             };
     
-            console.log("Enviando dados:", dataToSend);
     
-            const response = await fetch("http://localhost/social-fitwave/Backend/routers/api.php", {
+            const response = await fetch(`${API_URL}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -92,11 +92,9 @@ function useUserProfile(email, token) {
                 body: JSON.stringify(dataToSend)
             });
     
-            // Verifique se a resposta é válida e se a resposta é JSON
+  
             const result = await response.json();
     
-            // Log da resposta para depuração
-            console.log("Resposta da API:", result);
     
             if (result.success === true) {
                 setProfileModalOpen(false);
@@ -113,7 +111,6 @@ function useUserProfile(email, token) {
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         if (file) {
-            // Pega apenas o nome do arquivo e salva no estado
             setEditProfile({ ...editProfile, profile_picture: file.name });
         }
     };
@@ -127,7 +124,7 @@ function useUserProfile(email, token) {
             return;  
         }
 
-        const response = await fetch('http://localhost/social-fitwave/Backend/routers/api.php', {
+        const response = await fetch(`${API_URL}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -137,7 +134,6 @@ function useUserProfile(email, token) {
         });
 
         const data = await response.json();
-        console.log("Resposta da API:", data);
 
         if (data.success) {
             navigate("/");
@@ -154,7 +150,7 @@ function useUserProfile(email, token) {
         updateProfile,
         ToggleModal,
         HandleDelete,
-        handleImageChange  // Expor a função para lidar com o upload da imagem
+        handleImageChange  
     };
 }
 
