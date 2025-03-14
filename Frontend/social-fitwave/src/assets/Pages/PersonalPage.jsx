@@ -2,8 +2,7 @@ import { useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import '../../Css/PagesCss/PersonalPage.css';
 import PersonalProfile from '../Blocks/PersonalProfile.jsx';
-import { IMAGE_URL } from '../../config.js';
-import { API_URL } from '../../config.js';
+import { IMAGE_URL,API_URL } from '../../config.js';
 import ButtonNewEvent from '../Buttons/ButtonNewEvent.jsx'
 
 
@@ -37,9 +36,16 @@ const getProfilePicture = async (email, token) => {
 
 function PersonalPage() {
     const location = useLocation();
+    const navigate = useNavigate();
     const { email, token } = location.state || {};
     
     const [profileImage, setProfileImage] = useState(""); 
+
+    useEffect(() => {
+        if (!token) {
+            navigate("/", { replace: true });
+        }
+    }, [token, navigate]);
 
     useEffect(() => {
         const loadProfilePicture = async () => {
