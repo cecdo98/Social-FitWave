@@ -135,11 +135,9 @@
                 return false;
             }
             
-            // SQL para atualizar o perfil
             $sql = "UPDATE users SET " . implode(", ", $fields) . " WHERE id = ?";
             $params[] = $id;
         
-            // Prepare the statement
             $stmt = $this->pdo->prepare($sql);
             return $stmt->execute($params);
         }

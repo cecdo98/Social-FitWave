@@ -143,7 +143,7 @@
                         echo json_encode(["success" => false, "message" => "Foto de perfil não encontrada."]);
                     }
                 } else {
-                    echo json_encode(["success" => false, "message" => "Usuário não encontrado."]);
+                    echo json_encode(["success" => false, "message" => "Utilizador não encontrado."]);
                 }
                 break;
         }
